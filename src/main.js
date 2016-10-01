@@ -1,5 +1,8 @@
-"use strict";
-var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
-var app_module_1 = require('./app.module.ts');
-platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule);
+import 'core-js/es6';
+import 'core-js/es7/reflect';
+import 'zone.js/dist/zone';
+import './styles.css';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {AppModule} from './app/app.module';
+platformBrowserDynamic().bootstrapModule(AppModule);
 //# sourceMappingURL=main.js.map

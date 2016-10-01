@@ -7,17 +7,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {AppComponent} from './components/app.game.component';
-export let AppModule = class AppModule {
+import {Injectable} from '@angular/core';
+export let GameService = class GameService {
+    startGame() {
+        console.log("game is started");
+    }
 };
-AppModule = __decorate([
-    NgModule({
-        imports: [BrowserModule],
-        declarations: [AppComponent],
-        bootstrap: [AppComponent]
-    }),
+GameService = __decorate([
+    Injectable(),
     __metadata('design:paramtypes', [])
-], AppModule);
-//# sourceMappingURL=app.module.js.map
+], GameService);
+//# sourceMappingURL=game.service.js.map
