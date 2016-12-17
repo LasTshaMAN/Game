@@ -1,7 +1,9 @@
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var path = require("path");
-var phaserModulePath = path.join(__dirname, '/node_modules/phaser/');
+const webpack = require('webpack');
+const path = require("path");
+const phaserModulePath = path.join(__dirname, '/node_modules/phaser/');
+
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -15,6 +17,16 @@ module.exports = {
         filename: 'app.bundle.js'
     },
 
+    loaders: [
+        {
+            test: /\.(jpe?g|png|gif|svg)$/i,
+            loaders: [
+                'file?hash=sha512&digest=hex&name=[hash].[ext]',
+                'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+            ]
+        }
+    ],
+
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html'
@@ -23,6 +35,9 @@ module.exports = {
             "Phaser": path.join(phaserModulePath, 'build/custom/phaser-split.js'),
             "PIXI": path.join(phaserModulePath, 'build/custom/pixi.js'),
             "p2": path.join(phaserModulePath, 'build/custom/p2.js'),
-        })
+        }),
+        new CopyWebpackPlugin([
+            { from: './assets', to: 'assets' }
+        ])
     ]
 };
