@@ -4,7 +4,7 @@ import {GameService} from "../services/game.service";
 
 @Component({
     selector: 'my-app',
-    template: '<div>Game container</div>',
+    template: '<div>Game container ...</div>',
     providers: [GameService]
 })
 export class AppComponent implements OnInit {
