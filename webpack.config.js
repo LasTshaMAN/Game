@@ -11,13 +11,21 @@ module.exports = {
     devtool: 'source-map',
     debug: true,
 
-    entry: './dist/src/main.js',
+    entry: './src/main.ts',
     output: {
         path: './dist',
         filename: 'app.bundle.js'
     },
 
+    resolve: {
+        extensions: ['', '.ts']
+    },
+
     loaders: [
+        {
+            test: /\.ts$/,
+            loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+        },
         {
             test: /\.(jpe?g|png|gif|svg)$/i,
             loaders: [
@@ -30,11 +38,6 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/index.html'
-        }),
-        new webpack.ProvidePlugin({
-            "Phaser": path.join(phaserModulePath, 'build/custom/phaser-split.js'),
-            "PIXI": path.join(phaserModulePath, 'build/custom/pixi.js'),
-            "p2": path.join(phaserModulePath, 'build/custom/p2.js'),
         }),
         new CopyWebpackPlugin([
             { from: './assets', to: 'assets' }

@@ -1,5 +1,5 @@
 import {Position} from "./Position";
-import {Attackable} from "./Attackable";
+import {Damageable} from "./Damageable";
 import {getRandomNumber} from "./RandomNumberGenerator";
 
 
@@ -7,16 +7,15 @@ export class Dragon {
 
     private static MOVEMENT_LENGTH = 20;
 
-    attackPower: number;
-    position: Position;
-    sprite: Phaser.Sprite;
+    private attackPower: number;
+    private position: Position;
 
-    lastTimeAttackedMs: number;
+    private lastTimeAttackedMs: number;
 
-    constructor(attackPower: number, sprite: Phaser.Sprite) {
+    constructor(attackPower: number) {
         this.attackPower = attackPower;
-        this.position = new Position(sprite.centerX, sprite.centerY);
-        this.sprite = sprite;
+        // this.position = new Position(sprite.centerX, sprite.centerY);
+        // this.sprite = sprite;
         this.lastTimeAttackedMs = 0;
     }
 
@@ -24,12 +23,12 @@ export class Dragon {
         return (Date.now() - this.lastTimeAttackedMs) < 1000;
     }
 
-    isNearbyWith(target: Attackable): boolean {
+    isNearbyWith(target: Damageable): boolean {
         let targetPosition = target.getPosition();
         return this.position.closeTo(targetPosition);
     }
 
-    attack(target: Attackable): void {
+    attack(target: Damageable): void {
         target.takeDamage(this.attackPower);
         this.lastTimeAttackedMs = Date.now();
     }
@@ -52,22 +51,22 @@ export class Dragon {
     }
 
     private moveUp(): void {
-        this.sprite.centerY += Dragon.MOVEMENT_LENGTH;
+        // this.sprite.centerY += Dragon.MOVEMENT_LENGTH;
         this.position.y += Dragon.MOVEMENT_LENGTH;
     }
 
     private moveRight(): void {
-        this.sprite.centerX += Dragon.MOVEMENT_LENGTH;
+        // this.sprite.centerX += Dragon.MOVEMENT_LENGTH;
         this.position.x += Dragon.MOVEMENT_LENGTH;
     }
 
     private moveDown(): void {
-        this.sprite.centerY -= Dragon.MOVEMENT_LENGTH;
+        // this.sprite.centerY -= Dragon.MOVEMENT_LENGTH;
         this.position.y -= Dragon.MOVEMENT_LENGTH;
     }
 
     private moveLeft(): void {
-        this.sprite.centerX -= Dragon.MOVEMENT_LENGTH;
+        // this.sprite.centerX -= Dragon.MOVEMENT_LENGTH;
         this.position.x -= Dragon.MOVEMENT_LENGTH;
     }
 }

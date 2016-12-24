@@ -1,7 +1,7 @@
 import {Position} from "./Position";
 
 
-export interface Attackable {
+export interface Damageable {
 
     getPosition(): Position;
 
