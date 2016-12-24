@@ -1,4 +1,6 @@
 import {expect} from "chai";
+import 'mocha';
+
 import {getRandomNumber} from "../src/app/domain/RandomNumberGenerator";
 
 

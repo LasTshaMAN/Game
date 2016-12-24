@@ -2,43 +2,20 @@
   "name": "game",
   "version": "0.0.1",
   "scripts": {
-    "postinstall": "typings install",
     "clean": "cleandir ./dist",
     "compile": "npm run clean && tsc",
-    "test": "npm run compile && mocha ./dist/test/*.js",
+    "test": "mocha --compilers ts:ts-node/register ./test/**/*",
     "build": "npm run test && webpack"
   },
   "dependencies": {
-    "@angular/common": "2.0.0-rc.5",
-    "@angular/compiler": "2.0.0-rc.5",
-    "@angular/core": "2.0.0-rc.5",
-    "@angular/http": "2.0.0-rc.5",
-    "@angular/platform-browser": "2.0.0-rc.5",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.5",
-    "copy-webpack-plugin": "^4.0.1",
-    "core-js": "2.4.1",
-    "excalibur": "^0.8.0",
-    "rxjs": "5.0.0-beta.6",
-    "zone.js": "0.6.12"
+    "typescript": "^2.1.4",
+    "webpack": "^1.14.0"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "^3.0.0-beta.17",
+    "@types/chai": "^3.4.34",
+    "@types/mocha": "^2.2.34",
     "chai": "^3.5.0",
-    "clean-dir": "^1.0.3",
-    "cross-env": "2.0.0",
-    "css-loader": "^0.25.0",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "html-webpack-plugin": "2.22.0",
-    "mocha": "^3.1.0",
-    "mocha-jsdom": "^1.1.0",
-    "mocha-webpack": "^0.7.0",
-    "raw-loader": "0.5.1",
-    "script-loader": "^0.7.0",
-    "ts-loader": "^0.8.2",
-    "ts-node": "^1.7.2",
-    "typemoq": "^1.0.3",
-    "typescript": "^2.1.4",
-    "typings": "^1.4.0",
-    "webpack": "1.13.1"
+    "mocha": "^3.2.0",
+    "ts-node": "^1.7.2"
   }
 }

@@ -1,46 +1,39 @@
-const webpack = require('webpack');
-const path = require("path");
-const phaserModulePath = path.join(__dirname, '/node_modules/phaser/');
+// const webpack = require('webpack');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
-module.exports = {
+// module.exports = {
 
-    devtool: 'source-map',
-    debug: true,
+//     devtool: 'source-map',
+//     debug: true,
 
-    entry: './src/main.ts',
-    output: {
-        path: './dist',
-        filename: 'app.bundle.js'
-    },
+//     entry: './src/main.ts',
+//     output: {
+//         path: './dist',
+//         filename: 'bundle.js'
+//     },
 
-    resolve: {
-        extensions: ['', '.ts']
-    },
+//     resolve: {
+//         extensions: ["", ".ts", ".js"]
+//     },
 
-    loaders: [
-        {
-            test: /\.ts$/,
-            loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
-        },
-        {
-            test: /\.(jpe?g|png|gif|svg)$/i,
-            loaders: [
-                'file?hash=sha512&digest=hex&name=[hash].[ext]',
-                'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
-            ]
-        }
-    ],
+//     module: {
+//         loaders: [
+//             {
+//                 test: /\.tsx?$/,
+//                 loader: "ts-loader",
+//                 exclude: /node_modules/
+//             }
+//         ]
+//     },
 
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html'
-        }),
-        new CopyWebpackPlugin([
-            { from: './assets', to: 'assets' }
-        ])
-    ]
-};
+//     plugins: [
+//         new HtmlWebpackPlugin({
+//             template: './src/index.html'
+//         }),
+//         new CopyWebpackPlugin([
+//             { from: './assets', to: 'assets' }
+//         ])
+//     ]
+// };
