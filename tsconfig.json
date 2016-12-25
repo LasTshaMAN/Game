@@ -10,9 +10,5 @@
     "declaration": true,
     "rootDir": ".",
     "outDir": "./out"
-  },
-  "includes": [
-    "./src/**/*",
-    "./test/**/*"
-  ]
+  }
 }

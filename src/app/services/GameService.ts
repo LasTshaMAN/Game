@@ -1,14 +1,9 @@
 import {Injectable} from "@angular/core";
+import ex from 'excalibur';
 
 
 @Injectable()
 export class GameService {
-
-    // private static MAX_FIELD_COORDINATE_X = 1280;
-    // private static MAX_FIELD_COORDINATE_Y = 720;
-    //
-    // private dragon: Dragon;
-    // private goblins: Goblin[];
 
     startGame() {
         console.log("game is started");
@@ -18,32 +13,44 @@ export class GameService {
             height: 600
         });
 
+
+
+
+        ex.Engi
+
+
+
+
+
+
+
+
         game.start();
 
-        this.game = new Phaser.Game(GameService.MAX_FIELD_COORDINATE_X, GameService.MAX_FIELD_COORDINATE_Y, Phaser.AUTO, "game", {
-
-            preload: () => {
-                this.game.load.image('dragon', './assets/dragon.png');
-                this.game.load.image('goblin', './assets/goblin.jpg');
-            },
-
-            create: () => {
-                let dragonSprite = this.game.add.sprite(200, 200, 'dragon');
-                this.dragon = new Dragon(5, dragonSprite);
-
-                this.goblins = [];
-                for (let i = 0; i < 5; ++i) {
-                    this.goblins.push(this.createGoblinRandomly());
-                }
-            },
-
-            update: () => {
-                if (!this.dragon.attackIsOnCooldown()) {
-                    this.attackNearbyGoblins();
-                }
-                this.dragon.flyRandomly();
-            }
-        });
+        // this.game = new Phaser.Game(GameService.MAX_FIELD_COORDINATE_X, GameService.MAX_FIELD_COORDINATE_Y, Phaser.AUTO, "game", {
+        //
+        //     preload: () => {
+        //         this.game.load.image('dragon', './assets/dragon.png');
+        //         this.game.load.image('goblin', './assets/goblin.jpg');
+        //     },
+        //
+        //     create: () => {
+        //         let dragonSprite = this.game.add.sprite(200, 200, 'dragon');
+        //         this.dragon = new Dragon(5, dragonSprite);
+        //
+        //         this.goblins = [];
+        //         for (let i = 0; i < 5; ++i) {
+        //             this.goblins.push(this.createGoblinRandomly());
+        //         }
+        //     },
+        //
+        //     update: () => {
+        //         if (!this.dragon.attackIsOnCooldown()) {
+        //             this.attackNearbyGoblins();
+        //         }
+        //         this.dragon.flyRandomly();
+        //     }
+        // });
 
     }
 

@@ -8,14 +8,23 @@ module.exports = {
     devtool: 'source-map',
     debug: true,
 
-    entry: './out/src/bootstrap.js',
+    entry: './src/bootstrap.ts',
     output: {
         path: './dist',
         filename: 'bundle.js'
     },
 
     resolve: {
-        extensions: ["", ".js"]
+        extensions: ["", ".ts", ".js"]
+    },
+
+    module: {
+        loaders: [
+            {
+                test: /\.ts$/,
+                loader: 'awesome-typescript-loader'
+            }
+        ]
     },
 
     plugins: [
