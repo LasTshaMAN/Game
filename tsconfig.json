@@ -9,7 +9,7 @@
     "emitDecoratorMetadata": true,
     "declaration": true,
     "rootDir": ".",
-    "outDir": "./dist"
+    "outDir": "./out"
   },
   "includes": [
     "./src/**/*",

@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Tests",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "args": [
+                "${workspaceRoot}/out/test/**/*.js"
+            ],
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "sourceMaps": true,
+            "outFiles": [ "${workspaceRoot}/out/test/**/*.js" ]
+        },
+        {
+            "name": "Random number generator test",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "args": [
+                "${workspaceRoot}/out/test/RandomNumberGeneratorTest.js"
+            ],
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "sourceMaps": true,
+            "outFiles": [ "${workspaceRoot}/out/test/RandomNumberGeneratorTest.js" ]
+        }
+    ]
+}
