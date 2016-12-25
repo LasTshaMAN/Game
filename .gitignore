@@ -1,4 +1,5 @@
 /out
+/dist
 /assets
 /node_modules
 /.idea

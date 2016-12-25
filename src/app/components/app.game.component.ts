@@ -17,6 +17,6 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         console.log('ngOnInit');
-        // this.gameService.startGame();
+        this.gameService.startGame();
     }
 }
