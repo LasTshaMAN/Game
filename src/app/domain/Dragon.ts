@@ -4,7 +4,7 @@ import {Character} from "./Character";
 
 export class Dragon extends Character {
 
-    moveTo(anotherPosition: Position): void {
+    flyTo(anotherPosition: Position): void {
         this.position = anotherPosition;
     }
 }

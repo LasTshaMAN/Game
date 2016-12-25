@@ -4,7 +4,7 @@ import {getRandomNumber} from "../src/app/utils/RandomNumberGenerator";
 
 describe('RandomNumberGenerator', () => {
 
-    it('should return a number between min and max values', () => {
+    it('should allow to generate a number between min and max values', () => {
         let minValue = 3;
         let maxValue = 25;
 

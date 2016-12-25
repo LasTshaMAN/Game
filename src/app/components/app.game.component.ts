@@ -1,19 +1,22 @@
-// import {Component, OnInit} from "@angular/core";
-// import {GameService} from "../domain/game.service";
+import {Component, OnInit} from "@angular/core";
+import {GameService} from "../services/GameService";
 
 
-// @Component({
-//     selector: 'my-app',
-//     template: '<div>Game container ...</div>',
-//     providers: [GameService]
-// })
-// export class AppComponent implements OnInit {
+@Component({
+    selector: 'my-app',
+    template: '<div>Game container ...</div>',
+    providers: [GameService]
+})
+export class AppComponent implements OnInit {
 
-//     constructor(private gameService: GameService) {
-//     }
+    private gameService: GameService;
 
-//     ngOnInit(): void {
-//         console.log('ngOnInit');
-//         this.gameService.startGame();
-//     }
-// }
+    constructor(gameService: GameService) {
+        this.gameService = gameService;
+    }
+
+    ngOnInit(): void {
+        console.log('ngOnInit');
+        // this.gameService.startGame();
+    }
+}

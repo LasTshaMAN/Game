@@ -3,7 +3,7 @@ import {Locatable} from "./Locatable";
 import {Mortal} from "./Mortal";
 
 
-export class Character implements Locatable, Mortal {
+export abstract class Character implements Locatable, Mortal {
 
     protected position: Position;
     private health: number;
@@ -15,6 +15,11 @@ export class Character implements Locatable, Mortal {
 
     getPosition(): Position {
         return this.position;
+    }
+
+    closeTo(another: Locatable): boolean {
+        return (Math.abs(this.position.x - another.getPosition().x) < 15)
+            && (Math.abs(this.position.y - another.getPosition().y) < 15);
     }
 
     getHealth(): number {
