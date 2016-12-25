@@ -1,16 +1,10 @@
 import {Position} from "./Position";
-import { Locatable } from "./Locatable";
+import {Character} from "./Character";
 
 
-export class Dragon implements Locatable {
+export class Dragon extends Character {
 
-    private position: Position;
-
-    constructor(position: Position) {
-        this.position = position;
-    }
-
-    getPosition(): Position {
-        return this.position;
+    moveTo(anotherPosition: Position): void {
+        this.position = anotherPosition;
     }
 }

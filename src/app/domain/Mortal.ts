@@ -1,6 +1,3 @@
-import {Position} from "./Position";
-
-
 export interface Mortal {
 
     isAlive(): boolean;

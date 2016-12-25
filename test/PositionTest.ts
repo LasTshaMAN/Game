@@ -1,5 +1,5 @@
-import { expect } from "chai";
-import { Position } from "../src/app/domain/Position"
+import {expect} from "chai";
+import {Position} from "../src/app/domain/Position";
 
 
 describe('Position', () => {
