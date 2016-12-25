@@ -1,9 +1,11 @@
 import {Position} from "./Position";
 
 
-export interface Damageable {
+export interface Mortal {
 
-    getPosition(): Position;
+    isAlive(): boolean;
+
+    getHealth(): number;
 
     takeDamage(damage: number): void;
 }

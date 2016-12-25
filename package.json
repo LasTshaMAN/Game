@@ -5,6 +5,7 @@
     "clean": "cleandir ./out",
     "compile": "npm run clean && tsc",
     "test": "npm run compile && mocha ./out/test/**/*.js",
+    "test:coverage": "npm run compile && istanbul cover node_modules/mocha/bin/_mocha ./out/test/**/*.js",
     "build": "npm run test && webpack"
   },
   "dependencies": {
@@ -16,7 +17,7 @@
     "@types/mocha": "^2.2.34",
     "chai": "^3.5.0",
     "clean-dir": "^1.0.3",
-    "mocha": "^3.2.0",
-    "ts-node": "^1.7.2"
+    "istanbul": "^v1.1.0-alpha.1",
+    "mocha": "^3.2.0"
   }
 }

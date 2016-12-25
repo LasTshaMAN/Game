@@ -1,20 +1,42 @@
-// import {expect} from "chai";
-// import * as TypeMoq from "typemoq";
-// import {Goblin} from "../src/app/domain/Goblin";
+import { expect } from "chai";
+import { Position } from "../src/app/domain/Position";
+import { Goblin } from "../src/app/domain/Goblin";
 
 
-// describe('Testing Goblin', () => {
+describe('Goblin', () => {
 
-//     it('should be able to retrieve his position', (done) => {
-//         // let spriteMock = TypeMoq.Mock.ofType(Phaser.Sprite);
-//         // spriteMock.setup(x => x.centerX).returns(() => 3);
-//         // spriteMock.setup(x => x.centerY).returns(() => 4);
-//         // let goblin = new Goblin(10, spriteMock.object);
-//         //
-//         // let actualPosition = goblin.getPosition();
-//         //
-//         // expect(actualPosition.x).to.be.equal(3);
-//         // expect(actualPosition.y).to.be.equal(4);
-//         done();
-//     });
-// });
+    describe('Health', () => {
+
+        it('should decrease when he is attacked', () => {
+            let goblin = new Goblin(new Position(3, 4), 10);
+
+            goblin.takeDamage(4);
+
+            expect(goblin.getHealth()).to.be.equal(6);
+        });
+
+        it('should not drop below zero', () => {
+            let goblin = new Goblin(new Position(3, 4), 10);
+
+            goblin.takeDamage(45);
+
+            expect(goblin.getHealth()).to.be.equal(0);
+        });
+    });
+
+    it('should be alive when his health is > 0', () => {
+        let goblin = new Goblin(new Position(3, 4), 10);
+
+        goblin.takeDamage(9);
+
+        expect(goblin.isAlive()).to.be.true;
+    });
+
+    it('should die when his health drops to zero', () => {
+        let goblin = new Goblin(new Position(3, 4), 10);
+
+        goblin.takeDamage(10);
+
+        expect(goblin.isAlive()).to.be.false;
+    });
+});
