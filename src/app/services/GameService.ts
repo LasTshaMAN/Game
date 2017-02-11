@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import ex from 'excalibur';
+import {Engine} from 'excalibur'
 
 
 @Injectable()
@@ -8,22 +8,10 @@ export class GameService {
     startGame() {
         console.log("game is started");
 
-        let game = new ex.Engine({
+        let game = new Engine({
             width: 800,
             height: 600
         });
-
-
-
-
-        ex.Engi
-
-
-
-
-
-
-
 
         game.start();
 

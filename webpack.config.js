@@ -6,7 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 
     devtool: 'source-map',
-    debug: true,
 
     entry: './src/bootstrap.ts',
     output: {
@@ -15,7 +14,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ["", ".ts", ".js"]
+        extensions: [".ts", ".js"]
     },
 
     module: {
