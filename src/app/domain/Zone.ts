@@ -2,13 +2,19 @@ import {Goblin} from "./characters/Goblin";
 import {getRandomNumber} from "../utils/RandomNumberGenerator";
 import {Position} from "./Position";
 
+
 export class Zone {
 
-    radius: number;
-    // spawnedGoblins: Goblin[];
+    private radius: number;
+    private spawnedGoblins: Set<Goblin>;
 
     constructor(radius: number) {
         this.radius = radius;
+        this.spawnedGoblins = new Set();
+    }
+
+    getAmountOfSpawnedGoblins(): number {
+        return this.spawnedGoblins.size;
     }
 
     spawnGoblin(): Goblin {
@@ -17,6 +23,18 @@ export class Zone {
         let randomPosition = new Position(randomX, randomY);
         let randomHealth = getRandomNumber(10, 100);
 
-        return new Goblin(randomPosition, randomHealth);
+        let spawnedGoblin = new Goblin(randomPosition, randomHealth);
+
+        this.spawnedGoblins.add(spawnedGoblin);
+
+        return spawnedGoblin;
+    }
+
+    removeDeadGoblins() {
+        this.spawnedGoblins.forEach((spawnedGoblin) => {
+            if (!spawnedGoblin.isAlive()) {
+                this.spawnedGoblins.delete(spawnedGoblin);
+            }
+        });
     }
 }

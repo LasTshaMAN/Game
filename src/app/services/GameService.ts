@@ -1,46 +1,66 @@
 import {Injectable} from "@angular/core";
 import {Engine, Actor, Color, LockedCamera} from 'excalibur';
-import {DragonActor} from "../actors/DragonActor";
+import {PositionSynchronizer} from "../synchronizers/PositionSynchronizer";
 import {Position} from "../domain/Position";
-import {getRandomNumber} from "../utils/RandomNumberGenerator";
-import {GoblinActor} from "../actors/GoblinActor";
+import {Zone} from "../domain/Zone";
+import {Dragon} from "../domain/characters/Dragon";
 
 
 @Injectable()
 export class GameService {
 
+    private game: Engine;
+
     startGame() {
         console.log("game is started");
 
-        let game = new Engine({
+        this.createGame();
+
+        let dragon = new Dragon(new Position(0, 0), 100);
+        let dragonActor = this.createActor(50, Color.Violet);
+        let dragonPositionSynchronizer = new PositionSynchronizer(dragon, dragonActor);
+
+        this.lockCameraOn(dragonActor);
+
+        let zone = new Zone(500);
+
+        const totalAmountOfGoblins = 10;
+        for (let i = 0; i < totalAmountOfGoblins; i++) {
+            let goblin = zone.spawnGoblin();
+            let goblinActor = this.createActor(40, Color.Red);
+            let goblinPositionSynchronizer = new PositionSynchronizer(goblin, goblinActor);
+        }
+
+        this.game.on('postupdate', () => {
+
+
+            // dragon.flyTo(new Position(getRandomNumber(0, 100), getRandomNumber(0, 100)));
+        });
+
+        this.game.start();
+    }
+
+    private createGame() {
+        this.game = new Engine({
             width: 800,
             height: 600
         });
-        game.backgroundColor = Color.Gray;
+        this.game.backgroundColor = Color.Gray;
+    }
 
-        let dragonActor = new Actor();
-        dragonActor.setWidth(50);
-        dragonActor.setHeight(50);
-        dragonActor.color = Color.Violet;
+    private createActor(size: number, color: Color): Actor {
+        let actor = new Actor();
+        actor.setWidth(size);
+        actor.setHeight(size);
+        actor.color = color;
 
-        let goblinActor = new Actor();
-        goblinActor.setWidth(50);
-        goblinActor.setHeight(50);
-        goblinActor.color = Color.Red;
+        this.game.currentScene.add(actor);
 
-        game.currentScene.add(dragonActor);
-        game.currentScene.add(goblinActor);
+        return actor;
+    }
 
-        game.currentScene.camera = new LockedCamera();
-        game.currentScene.camera.setActorToFollow(dragonActor);
-
-        let dragon = new DragonActor(new Position(0, 0), 100, dragonActor);
-        let goblin = new GoblinActor(new Position(200, 200), 10, goblinActor);
-
-        game.on('postupdate', () => {
-            dragon.flyTo(new Position(getRandomNumber(0, 100), getRandomNumber(0, 100)))
-        });
-
-        game.start();
+    private lockCameraOn(actor: Actor) {
+        this.game.currentScene.camera = new LockedCamera();
+        this.game.currentScene.camera.setActorToFollow(actor);
     }
 }
