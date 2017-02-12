@@ -1,6 +1,6 @@
 import {expect} from "chai";
-import {Position} from "../src/app/domain/Position";
-import {Character} from "../src/app/domain/Character";
+import {Position} from "../../../../src/app/domain/Position";
+import {Character} from "../../../../src/app/domain/characters/Character";
 
 
 describe('Character', () => {
@@ -9,7 +9,7 @@ describe('Character', () => {
 
         describe('his health', () => {
 
-            it('should decrease when he is attacked', () => {
+            it('should decrease when he takes damage', () => {
                 let character = new SomeCharacter(new Position(3, 4), 10);
 
                 character.takeDamage(4);
@@ -17,7 +17,7 @@ describe('Character', () => {
                 expect(character.getHealth()).to.be.equal(6);
             });
 
-            it('should not drop below zero', () => {
+            it('should not drop below zero even when he dies', () => {
                 let character = new SomeCharacter(new Position(3, 4), 10);
 
                 character.takeDamage(45);
@@ -54,14 +54,14 @@ describe('Character', () => {
             expect(actualPosition).to.be.equal(originalPosition);
         });
 
-        it('should acknowledge that he is close to another Character if he is', () => {
+        it('should acknowledge that he is close to another Character if he really is', () => {
             let character = new SomeCharacter(new Position(3, 4), 10);
             let anotherCharacter = new SomeCharacter(new Position(4, 5), 10);
 
             expect(character.closeTo(anotherCharacter)).to.be.true;
         });
 
-        it('should not acknowledge that he is close to another Character if he is not', () => {
+        it('should not acknowledge that he is close to another Character if he really is not', () => {
             let character = new SomeCharacter(new Position(3, 4), 10);
             let anotherCharacter = new SomeCharacter(new Position(10, 20), 10);
 

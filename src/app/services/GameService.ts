@@ -1,5 +1,9 @@
 import {Injectable} from "@angular/core";
-import {Engine} from 'excalibur'
+import {Engine, Actor, Color, LockedCamera} from 'excalibur';
+import {DragonActor} from "../actors/DragonActor";
+import {Position} from "../domain/Position";
+import {getRandomNumber} from "../utils/RandomNumberGenerator";
+import {GoblinActor} from "../actors/GoblinActor";
 
 
 @Injectable()
@@ -12,48 +16,31 @@ export class GameService {
             width: 800,
             height: 600
         });
+        game.backgroundColor = Color.Gray;
+
+        let dragonActor = new Actor();
+        dragonActor.setWidth(50);
+        dragonActor.setHeight(50);
+        dragonActor.color = Color.Violet;
+
+        let goblinActor = new Actor();
+        goblinActor.setWidth(50);
+        goblinActor.setHeight(50);
+        goblinActor.color = Color.Red;
+
+        game.currentScene.add(dragonActor);
+        game.currentScene.add(goblinActor);
+
+        game.currentScene.camera = new LockedCamera();
+        game.currentScene.camera.setActorToFollow(dragonActor);
+
+        let dragon = new DragonActor(new Position(0, 0), 100, dragonActor);
+        let goblin = new GoblinActor(new Position(200, 200), 10, goblinActor);
+
+        game.on('postupdate', () => {
+            dragon.flyTo(new Position(getRandomNumber(0, 100), getRandomNumber(0, 100)))
+        });
 
         game.start();
-
-        // this.game = new Phaser.Game(GameService.MAX_FIELD_COORDINATE_X, GameService.MAX_FIELD_COORDINATE_Y, Phaser.AUTO, "game", {
-        //
-        //     preload: () => {
-        //         this.game.load.image('dragon', './assets/dragon.png');
-        //         this.game.load.image('goblin', './assets/goblin.jpg');
-        //     },
-        //
-        //     create: () => {
-        //         let dragonSprite = this.game.add.sprite(200, 200, 'dragon');
-        //         this.dragon = new Dragon(5, dragonSprite);
-        //
-        //         this.goblins = [];
-        //         for (let i = 0; i < 5; ++i) {
-        //             this.goblins.push(this.createGoblinRandomly());
-        //         }
-        //     },
-        //
-        //     update: () => {
-        //         if (!this.dragon.attackIsOnCooldown()) {
-        //             this.attackNearbyGoblins();
-        //         }
-        //         this.dragon.flyRandomly();
-        //     }
-        // });
-
     }
-
-    // private createGoblinRandomly(): Goblin {
-    //     let goblinXPosition = getRandomNumber(0, GameService.MAX_FIELD_COORDINATE_X);
-    //     let goblinYPosition = getRandomNumber(0, GameService.MAX_FIELD_COORDINATE_Y);
-    //     let goblinSprite = this.game.add.sprite(goblinXPosition, goblinYPosition, 'goblin');
-    //     return new Goblin(100, goblinSprite);
-    // }
-
-    // private attackNearbyGoblins(): void {
-    //     for (let goblin of this.goblins) {
-    //         if (this.dragon.isNearbyWith(goblin)) {
-    //             this.dragon.attack(goblin);
-    //         }
-    //     }
-    // }
 }

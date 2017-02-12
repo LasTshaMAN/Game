@@ -1,10 +1,10 @@
 import {expect} from "chai";
-import {getRandomNumber} from "../src/app/utils/RandomNumberGenerator";
+import {getRandomNumber} from "../../../src/app/utils/RandomNumberGenerator";
 
 
 describe('RandomNumberGenerator', () => {
 
-    it('should allow to generate a number between min and max values', () => {
+    it('should generate a random number between min and max values', () => {
         let minValue = 3;
         let maxValue = 25;
 

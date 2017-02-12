@@ -9,7 +9,7 @@ module.exports = {
 
     entry: './src/bootstrap.ts',
     output: {
-        path: './dist',
+        path: './target/dist',
         filename: 'bundle.js'
     },
 

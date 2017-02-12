@@ -1,6 +1,6 @@
 import {expect} from "chai";
-import {Position} from "../src/app/domain/Position";
-import {Dragon} from "../src/app/domain/Dragon";
+import {Position} from "../../../../src/app/domain/Position";
+import {Dragon} from "../../../../src/app/domain/characters/Dragon";
 
 
 describe('Dragon', () => {

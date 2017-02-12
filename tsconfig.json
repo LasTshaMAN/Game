@@ -9,6 +9,6 @@
     "emitDecoratorMetadata": true,
     "declaration": true,
     "rootDir": ".",
-    "outDir": "./out"
+    "outDir": "./target/out"
   }
 }

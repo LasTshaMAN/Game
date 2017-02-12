@@ -2,11 +2,11 @@
   "name": "game",
   "version": "0.0.1",
   "scripts": {
-    "clean": "cleandir ./out && cleandir ./dist",
-    "compile": "cleandir ./out && tsc",
-    "test": "npm run compile && mocha ./out/test/**/*.js",
-    "test:coverage": "npm run compile && istanbul cover node_modules/mocha/bin/_mocha ./out/test/**/*.js",
-    "build": "cleandir ./dist && webpack"
+    "clean": "cleandir ./target",
+    "compile": "cleandir ./target/out && tsc",
+    "test": "npm run compile && mocha ./target/out/test/**/*.js",
+    "test:coverage": "npm run compile && istanbul cover node_modules/mocha/bin/_mocha ./target/out/test/**/*.js",
+    "build": "cleandir ./target && webpack"
   },
   "dependencies": {
     "@angular/common": "2.4.7",
