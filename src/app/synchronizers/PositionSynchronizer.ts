@@ -1,6 +1,7 @@
 import {Actor} from 'excalibur';
 import {Locatable} from "../domain/characters/Locatable";
 
+
 export class PositionSynchronizer {
 
     private locatable: Locatable;

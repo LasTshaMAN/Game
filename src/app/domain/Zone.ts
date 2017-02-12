@@ -30,6 +30,18 @@ export class Zone {
         return spawnedGoblin;
     }
 
+    getGoblinsCloseTo(position: Position): Set<Goblin> {
+        let goblinsCloseBy = new Set<Goblin>();
+
+        this.spawnedGoblins.forEach((spawnedGoblin) => {
+            if (spawnedGoblin.getPosition().distanceTo(position) < 500) {
+                goblinsCloseBy.add(spawnedGoblin);
+            }
+        });
+
+        return goblinsCloseBy;
+    }
+
     removeDeadGoblins() {
         this.spawnedGoblins.forEach((spawnedGoblin) => {
             if (!spawnedGoblin.isAlive()) {

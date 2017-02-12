@@ -22,7 +22,7 @@ export class GameService {
 
         this.lockCameraOn(dragonActor);
 
-        let zone = new Zone(500);
+        let zone = new Zone(1000);
 
         const totalAmountOfGoblins = 10;
         for (let i = 0; i < totalAmountOfGoblins; i++) {
@@ -32,9 +32,13 @@ export class GameService {
         }
 
         this.game.on('postupdate', () => {
-
-
-            // dragon.flyTo(new Position(getRandomNumber(0, 100), getRandomNumber(0, 100)));
+            let closeGoblins = zone.getGoblinsCloseTo(dragon.getPosition());
+            for (let goblin of closeGoblins) {
+                if (goblin.getPosition() != dragon.getPosition()) {
+                    dragon.flyTo(goblin.getPosition());
+                    dragonPositionSynchronizer.syncActor();
+                }
+            }
         });
 
         this.game.start();
